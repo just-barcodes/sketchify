@@ -1,0 +1,120 @@
+.stage {
+  position: relative;
+  flex: 1;
+  min-height: 420px;
+  background: var(--color-stage);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-panel);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 22px;
+}
+
+.stage.dragging {
+  outline: 2px dashed var(--color-muted-2);
+  outline-offset: -10px;
+}
+
+.pair {
+  display: flex;
+  gap: 18px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  animation: fadeIn 0.25s ease;
+}
+
+.figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  flex: 0 1 auto;
+  max-width: 100%;
+}
+
+.caption {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted-2);
+}
+
+.imageWrap {
+  line-height: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--shadow-image);
+}
+
+/* Checkerboard behind the sketch so a transparent background reads as transparent. */
+.checker {
+  background-image:
+    linear-gradient(45deg, var(--color-checker) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--color-checker) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--color-checker) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--color-checker) 75%);
+  background-size: 18px 18px;
+  background-position:
+    0 0,
+    0 9px,
+    9px -9px,
+    -9px 0;
+}
+
+.canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 440px;
+  width: auto;
+  height: auto;
+}
+
+.empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  text-align: center;
+  padding: 24px;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  width: 100%;
+}
+
+.emptyIcon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-on-ink);
+  font-size: 24px;
+}
+
+.emptyTitle {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.emptyHint {
+  display: block;
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-top: 4px;
+}
