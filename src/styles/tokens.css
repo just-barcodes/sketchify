@@ -32,7 +32,11 @@
 
   /* Sketch paper presets */
   --color-paper-cream: #efe7d6; /* rgb(239, 231, 214) */
-  --color-checker: #eae4da; /* transparency checkerboard */
+
+  /* Transparency checkerboard — kept light in both themes (see dark block) so a
+     transparent (paper: None) sketch's dark ink stays visible. */
+  --color-checker-base: #f6f2eb; /* lighter square */
+  --color-checker: #eae4da; /* darker square */
 
   /* Disabled download button */
   --color-btn-disabled-bg: #e6e0d6;
@@ -86,8 +90,8 @@
   /* Range slider */
   --color-track: #3a3632;
 
-  /* Transparency checkerboard */
-  --color-checker: #2a2623;
+  /* Transparency checkerboard is intentionally NOT re-themed: it stays light so
+     dark pencil ink on a transparent background remains visible. */
 
   /* Disabled download button */
   --color-btn-disabled-bg: #2b2825;
