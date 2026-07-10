@@ -1,6 +1,7 @@
 import { useReducer, useRef, useState, type ChangeEvent } from 'react';
 import { Controls } from './components/Controls.tsx';
 import { Stage } from './components/Stage.tsx';
+import { ThemeToggle } from './components/ThemeToggle.tsx';
 import { useSketch } from './hooks/useSketch.ts';
 import { downloadSketch } from './lib/download.ts';
 import { isImageFile, loadImageData } from './lib/image.ts';
@@ -43,7 +44,10 @@ export default function App() {
             Turn any photo into a pencil sketch. Runs entirely in your browser.
           </p>
         </div>
-        <span className={styles.privacy}>nothing is uploaded</span>
+        <div className={styles.headerRight}>
+          <span className={styles.privacy}>nothing is uploaded</span>
+          <ThemeToggle />
+        </div>
       </header>
 
       <main className={styles.layout}>

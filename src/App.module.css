@@ -31,6 +31,12 @@
   margin-top: 5px;
 }
 
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
 .privacy {
   font-size: 11px;
   color: var(--color-muted-2);

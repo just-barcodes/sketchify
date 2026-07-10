@@ -13,6 +13,8 @@ image never leaves your device.
 - **Paper backgrounds:** white, cream, transparent, or a custom colour.
 - **Fine-tuning:** stroke intensity, contrast, brightness, and detail.
 - **Export** as PNG, JPG, or WEBP with an adjustable quality.
+- **Light and dark themes** — follows your OS preference by default, with a header toggle
+  that persists your choice.
 - **Fully client-side** — processing runs in a Web Worker, so the UI stays responsive and
   no data is sent anywhere.
 

@@ -9,6 +9,17 @@
       content="Turn any photo into a pencil sketch. Runs entirely in your browser, nothing is uploaded."
     />
     <title>Sketchify — pencil sketch converter</title>
+    <script>
+      // Resolve the theme before first paint to avoid a flash of the wrong one.
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme =
+          stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      } catch (e) {
+        /* localStorage/matchMedia unavailable: fall back to the light default */
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

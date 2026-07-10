@@ -4,6 +4,8 @@
  * keeps the same warm, papery aesthetic.
  */
 :root {
+  color-scheme: light;
+
   /* Surfaces */
   --color-bg: #eee9e0;
   --color-panel: #ffffff;
@@ -47,4 +49,50 @@
   /* Elevation */
   --shadow-panel: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
   --shadow-image: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+/*
+ * Dark theme: a warm graphite palette. Only the UI chrome is re-themed — the
+ * sketch's own paper colour is baked into the exported image by the algorithm,
+ * not by these tokens, so a "White paper" sketch stays white in either theme.
+ *
+ * An inline bootstrap in index.html sets data-theme before first paint (no
+ * flash); the header toggle flips it and persists the choice.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --color-bg: #171614;
+  --color-panel: #221f1d;
+  --color-stage: #1c1a18;
+  --color-divider: #322e2a;
+
+  /* Ink & text (inverted: light "ink" fills, dark text on it) */
+  --color-ink: #f1ece3;
+  --color-on-ink: #201d1b;
+  --color-muted: #a49c90;
+  --color-muted-2: #8a8378;
+  --color-muted-3: #6b655d;
+
+  /* Segmented controls */
+  --color-segment-bg: #2d2a27;
+  --color-segment-text: #b6ada2;
+
+  /* Accents */
+  --color-link: #cca865;
+  --color-link-hover: #e0bd7d;
+
+  /* Range slider */
+  --color-track: #3a3632;
+
+  /* Transparency checkerboard */
+  --color-checker: #2a2623;
+
+  /* Disabled download button */
+  --color-btn-disabled-bg: #2b2825;
+
+  /* Elevation (deeper shadow + a faint light hairline instead of a dark one) */
+  --shadow-panel: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --shadow-image: 0 1px 3px rgba(0, 0, 0, 0.5);
 }

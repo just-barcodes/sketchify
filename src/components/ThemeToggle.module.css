@@ -1,0 +1,25 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--color-segment-bg);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.toggle:hover {
+  background: var(--color-track);
+}
+
+.toggle svg {
+  width: 17px;
+  height: 17px;
+}
