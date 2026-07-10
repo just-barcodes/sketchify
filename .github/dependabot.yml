@@ -8,6 +8,12 @@ updates:
     open-pull-requests-limit: 10
     assignees:
       - just-barcodes
+    ignore:
+      # TypeScript 7 is held back: typescript-eslint peers require <6.1.0, so a
+      # major bump breaks install/lint. Remove once typescript-eslint supports 7.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
     groups:
       # Batch low-risk updates into a single PR; majors stay separate for review.
       minor-and-patch:
