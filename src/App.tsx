@@ -1,7 +1,7 @@
-import { useMemo, useRef, useState, type ChangeEvent } from 'react';
+import { useRef, useState, type ChangeEvent } from 'react';
 import { Stage } from './components/Stage.tsx';
-import { isImageFile, loadImageData, toImageData } from './lib/image.ts';
-import { toSketch } from './sketch/sketch.ts';
+import { useSketch } from './hooks/useSketch.ts';
+import { isImageFile, loadImageData } from './lib/image.ts';
 import { DEFAULT_PARAMS } from './sketch/types.ts';
 import styles from './App.module.css';
 
@@ -9,11 +9,7 @@ export default function App() {
   const [original, setOriginal] = useState<ImageData | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Synchronous for now; moves to a debounced Web Worker in the next step.
-  const sketch = useMemo<ImageData | null>(() => {
-    if (!original) return null;
-    return toImageData(toSketch(original, DEFAULT_PARAMS));
-  }, [original]);
+  const { sketch, processing } = useSketch(original, DEFAULT_PARAMS);
 
   async function handleFile(file: File) {
     if (!isImageFile(file)) return;
@@ -48,6 +44,12 @@ export default function App() {
             <button type="button" className={styles.uploadBtn} onClick={openPicker}>
               <span aria-hidden="true">&#8593;</span> Upload photo
             </button>
+            <span className={styles.spacer} />
+            {processing && (
+              <span className={styles.processing} role="status">
+                sketching&hellip;
+              </span>
+            )}
           </div>
 
           <input
