@@ -62,13 +62,7 @@ export default function App() {
             )}
           </div>
 
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={onInputChange}
-            hidden
-          />
+          <input ref={fileInputRef} type="file" accept="image/*" onChange={onInputChange} hidden />
         </section>
 
         <Controls

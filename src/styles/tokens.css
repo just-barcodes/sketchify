@@ -36,8 +36,7 @@
   --color-btn-disabled-bg: #e6e0d6;
 
   /* Typography */
-  --font-sans:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
 
   /* Shape */

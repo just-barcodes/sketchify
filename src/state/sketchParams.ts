@@ -13,9 +13,7 @@ const RESET_PARAMS: Pick<
   detail: 62,
 };
 
-export type SketchAction =
-  | { type: 'patch'; patch: Partial<SketchParams> }
-  | { type: 'reset' };
+export type SketchAction = { type: 'patch'; patch: Partial<SketchParams> } | { type: 'reset' };
 
 export function sketchReducer(state: SketchParams, action: SketchAction): SketchParams {
   switch (action.type) {
