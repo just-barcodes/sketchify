@@ -1,0 +1,25 @@
+.group {
+  display: flex;
+  gap: 6px;
+}
+
+.segment {
+  flex: 1;
+  padding: 9px 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: var(--radius-segment);
+  border: none;
+  text-align: center;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  background: var(--color-segment-bg);
+  color: var(--color-segment-text);
+}
+
+.active {
+  background: var(--color-ink);
+  color: var(--color-on-ink);
+}

@@ -1,15 +1,18 @@
-import { useRef, useState, type ChangeEvent } from 'react';
+import { useReducer, useRef, useState, type ChangeEvent } from 'react';
+import { Controls } from './components/Controls.tsx';
 import { Stage } from './components/Stage.tsx';
 import { useSketch } from './hooks/useSketch.ts';
 import { isImageFile, loadImageData } from './lib/image.ts';
+import { sketchReducer } from './state/sketchParams.ts';
 import { DEFAULT_PARAMS } from './sketch/types.ts';
 import styles from './App.module.css';
 
 export default function App() {
   const [original, setOriginal] = useState<ImageData | null>(null);
+  const [params, dispatch] = useReducer(sketchReducer, DEFAULT_PARAMS);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const { sketch, processing } = useSketch(original, DEFAULT_PARAMS);
+  const { sketch, processing } = useSketch(original, params);
 
   async function handleFile(file: File) {
     if (!isImageFile(file)) return;
@@ -61,7 +64,7 @@ export default function App() {
           />
         </section>
 
-        {/* Controls sidebar goes here */}
+        <Controls params={params} dispatch={dispatch} />
       </main>
     </div>
   );
