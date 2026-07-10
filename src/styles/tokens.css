@@ -1,0 +1,51 @@
+/*
+ * Design tokens for Sketchify.
+ * Palette and type ported from the original "Graphite" design so the rebuild
+ * keeps the same warm, papery aesthetic.
+ */
+:root {
+  /* Surfaces */
+  --color-bg: #eee9e0;
+  --color-panel: #ffffff;
+  --color-stage: #f6f2eb;
+  --color-divider: #efeae1;
+
+  /* Ink & text */
+  --color-ink: #262523; /* primary text + active buttons */
+  --color-on-ink: #faf7f1; /* text on dark ink */
+  --color-muted: #8a847a;
+  --color-muted-2: #a49e93; /* labels, secondary values */
+  --color-muted-3: #b4aea3; /* hints, disabled */
+
+  /* Segmented controls */
+  --color-segment-bg: #f0ebe2;
+  --color-segment-text: #736c62;
+
+  /* Accents */
+  --color-link: #8a6d3b;
+  --color-link-hover: #6b5329;
+
+  /* Range slider */
+  --color-track: #d9d2c6;
+
+  /* Sketch paper presets */
+  --color-paper-cream: #efe7d6; /* rgb(239, 231, 214) */
+  --color-checker: #eae4da; /* transparency checkerboard */
+
+  /* Disabled download button */
+  --color-btn-disabled-bg: #e6e0d6;
+
+  /* Typography */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+
+  /* Shape */
+  --radius-panel: 16px;
+  --radius-control: 10px;
+  --radius-segment: 9px;
+
+  /* Elevation */
+  --shadow-panel: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-image: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
