@@ -87,6 +87,39 @@
   pointer-events: none;
 }
 
+.quality {
+  margin-top: 16px;
+  transition: opacity 0.15s;
+}
+
+.note {
+  font-size: 11px;
+  color: var(--color-muted-3);
+  margin-top: 8px;
+}
+
+.download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: var(--radius-control);
+  border: none;
+  font-size: 13.5px;
+  font-weight: 700;
+  background: var(--color-ink);
+  color: var(--color-on-ink);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.download:disabled {
+  background: var(--color-btn-disabled-bg);
+  color: var(--color-muted-3);
+  cursor: not-allowed;
+}
+
 .reset {
   align-self: flex-start;
   padding: 2px;

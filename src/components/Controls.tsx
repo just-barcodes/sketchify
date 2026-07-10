@@ -2,7 +2,7 @@ import { type Dispatch } from 'react';
 import { SegmentedControl, type SegmentOption } from './SegmentedControl.tsx';
 import { Slider } from './Slider.tsx';
 import { type SketchAction } from '../state/sketchParams.ts';
-import type { Background, PencilType, SketchParams } from '../sketch/types.ts';
+import type { Background, ExportFormat, PencilType, SketchParams } from '../sketch/types.ts';
 import styles from './Controls.module.css';
 
 const PENCIL_OPTIONS: SegmentOption<PencilType>[] = [
@@ -17,14 +17,42 @@ const PAPER_OPTIONS: SegmentOption<Background>[] = [
   { value: 'transparent', label: 'None' },
 ];
 
+const FORMAT_OPTIONS: SegmentOption<ExportFormat>[] = [
+  { value: 'png', label: 'PNG' },
+  { value: 'jpg', label: 'JPG' },
+  { value: 'webp', label: 'WEBP' },
+];
+
+const FORMAT_NOTES: Record<ExportFormat, string> = {
+  png: 'Lossless. Supports transparency.',
+  jpg: 'Small file. No transparency (white fill).',
+  webp: 'Best size-to-quality. Supports transparency.',
+};
+
 interface ControlsProps {
   params: SketchParams;
   dispatch: Dispatch<SketchAction>;
+  format: ExportFormat;
+  quality: number;
+  onFormatChange: (format: ExportFormat) => void;
+  onQualityChange: (quality: number) => void;
+  onDownload: () => void;
+  canDownload: boolean;
 }
 
-export function Controls({ params, dispatch }: ControlsProps) {
+export function Controls({
+  params,
+  dispatch,
+  format,
+  quality,
+  onFormatChange,
+  onQualityChange,
+  onDownload,
+  canDownload,
+}: ControlsProps) {
   const patch = (patch: Partial<SketchParams>) => dispatch({ type: 'patch', patch });
   const customActive = params.background === 'custom';
+  const qualityActive = format === 'jpg' || format === 'webp';
 
   return (
     <aside className={styles.panel}>
@@ -82,6 +110,37 @@ export function Controls({ params, dispatch }: ControlsProps) {
       </div>
 
       <div className={styles.divider} />
+
+      <div>
+        <div className={styles.sectionLabel}>Export format</div>
+        <SegmentedControl
+          label="Export format"
+          options={FORMAT_OPTIONS}
+          value={format}
+          onChange={onFormatChange}
+        />
+        <div className={styles.quality} style={{ opacity: qualityActive ? 1 : 0.45 }}>
+          <Slider
+            label="Quality"
+            value={quality}
+            min={10}
+            max={100}
+            onChange={onQualityChange}
+            valueLabel={qualityActive ? `${quality}%` : 'n/a'}
+            disabled={!qualityActive}
+          />
+          <div className={styles.note}>{FORMAT_NOTES[format]}</div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className={styles.download}
+        onClick={onDownload}
+        disabled={!canDownload}
+      >
+        <span aria-hidden="true">&#8595;</span> Download {format.toUpperCase()}
+      </button>
 
       <button type="button" className={styles.reset} onClick={() => dispatch({ type: 'reset' })}>
         Reset controls
